@@ -1,0 +1,387 @@
+body {
+    background-color: #ffffff; /* 和風なアイボリー */
+    font-family: "Noto Serif JP", serif;
+    color: #3e3e3e;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+
+/*ヘッダー(ロゴ)*/
+.logo-link{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+    margin-right:auto;
+    padding-left: 20px;
+}
+
+.logo{
+    height: 50px;
+}
+
+/*ヘッダー(タイトル)*/
+.site-title{
+    font-size: 42px;
+    font-weight: bold;
+}
+
+/*ヘッダー(本体)*/
+header {
+    padding: 1em 0;
+}
+
+.site-header {
+    position: fixed;
+    padding: 0px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #a0d8ef;/*空色*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1100;
+    transition: transform 0.3s ease; /* ← アニメーション */
+}
+
+/* 隠す用クラス */
+.site-header.hide {
+    transform: translateY(-100%);
+}
+
+/*サイドメニュー*/
+.menu-wrapper{
+    font-size:28px;
+    background-color: #a0d8ef;
+    border:none;
+    cursor:pointer;
+    margin-right: 50px;
+    border-radius:10px;
+    transition:all 0.2s;
+    padding: 10px;
+    position:relative;
+}
+
+.menu-wrapper:hover{
+    background-color: #c0e2f0;
+    transform: translateY(0px); 
+}
+
+.menu-icon{
+    width:40px;
+    height:25px;
+    cursor:pointer;
+    z-index:1100;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.menu-icon span{
+    display:block;
+    height:3px;
+    background:#0d0015;/*漆黒*/
+    border-radius:2px;
+    transition:0.35s;
+}
+
+#menu-toggle:checked + header .menu-wrapper .menu-icon span:nth-child(1){
+    transform:translateY(11px) rotate(45deg);
+}
+
+#menu-toggle:checked + header .menu-wrapper .menu-icon span:nth-child(2){
+    opacity:0;
+}
+
+#menu-toggle:checked + header .menu-wrapper .menu-icon span:nth-child(3){
+    transform:translateY(-11px) rotate(-45deg);
+}
+
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-250px;
+    width:250px;
+    height:100%;
+    background:#a0d8ef;
+    padding-top:100px;
+    display:flex;
+    flex-direction:column;
+    transition:0.3s;
+    z-index: 1050;
+    transition: right 0.3s ease, opacity 0.3s ease;
+    opacity:0;
+}
+
+/*サイドメニュー(開いた状態)*/
+#menu-toggle:checked ~ .side-menu{
+    right:0;
+    opacity:1;
+}
+
+/*サイドメニュー(a)*/
+.side-menu a{
+    text-decoration:none;
+    padding:15px 30px;
+    font-size:18px;
+    color:#0d0015;
+}
+
+.side-menu a:hover{
+    background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    background-color:#fffef8 ;
+    color:#2c3e50
+}
+
+/*サイドメニュー(p)*/
+.side-menu p{
+    padding: 15px 30px;
+    color:#0d0015;
+    border-bottom:3px solid rgba(204,231,255,1.0);/*#c0e2f0*/
+    margin-bottom:10px;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.3);
+    opacity:0;
+    pointer-events:none;
+    transition:0.3s;
+    z-index: 1000;
+}
+
+#menu-toggle:checked ~ .overlay{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.season-label {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 0.3em;
+}
+
+h1 {
+    color: #0d0015;
+    font-family: "Kaisei Decol", serif;
+    font-size: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+h2{
+    color: #0d0015;
+    font-family: "Noto Serif JP", serif;
+    font-size: 32px;
+    padding: 20px;
+    margin: 0px;
+}
+
+h3{
+    color: #0d0015;
+    font-family: "Noto Serif JP", serif;
+    font-size: 28px;
+}
+
+/*input*/
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #c0e2f0;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 70%;
+    font-family: "Noto Serif JP", serif;
+    background-color: #a0d8ef;
+    margin-left: 10px;
+    
+}
+#upload{
+    color: #0d0015;
+}
+
+/*p*/
+p{
+    color: #0d0015;
+    font-family: "Noto Serif JP", serif;
+    font-size: 20px;
+}
+/*li*/
+li{
+    color: #0d0015;
+    font-family: "Noto Serif JP", serif;
+    font-size: 20px;
+    padding-top:20px; 
+    padding-bottom:20px;
+}
+/*button*/
+button {
+    background: #a0d8ef;
+    border: none;
+    padding: 20px 60px;
+    font-family: "Noto Serif JP", serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #0d0015;
+    position: relative;
+    cursor: pointer;
+}
+button::before,
+button::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: #0d0015;
+    transition: transform 0.3s ease;
+}
+button::before {
+    top: 8px;
+    transform-origin: left;   
+}
+button::after {
+    bottom: 8px;
+    transform-origin: right; 
+}
+button:hover::before {
+    transform: scaleX(0); 
+}
+button:hover::after {
+    transform: scaleX(0); 
+}
+
+/*div*/
+div {
+    background-color: #a0d8ef;
+    border: 1px solid #c0e2f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.edit{
+    background-color:#ffffff;
+    border-radius: 0;
+    border: none;
+}
+.edit-buttons{
+    background-color:#ffffff;
+    border-radius: 0;
+    border: none;
+}
+.edit-execution-buttons{
+    background-color: #ffffff;
+    border-radius: 0;
+    border: none;
+}
+.edit-reset-button{
+    background-color: #ffffff;
+    border-radius: 0;
+    border: none;
+}
+.edit-download-button{
+    background-color: #ffffff;
+    border-radius: 0;
+    border: none;
+}
+/*main*/
+main {
+    background-color: #ffffff; 
+    font-family: "Noto Serif JP", serif;
+    color: #3e3e3e;
+    padding: 0px;
+    margin-top: 80px;
+}
+
+canvas {
+    border: 1px solid #0d0015;
+    max-width: 700px;
+    margin: 10px;
+}
+
+.auth-link {
+    color: #007b43;  
+}
+
+.auth-link:hover {
+    color: #316745;
+    text-decoration: underline;
+}
+
+/*フッター(本体)*/
+footer{
+    width: 100%;
+    margin-top: 20px;
+    height: auto;
+    background-color: #a0d8ef;
+    display: flex;
+    flex-direction: column;  /* ← これ追加 */
+    align-items: flex-start; 
+}
+
+/*div*/
+footer div{
+    background-color: #a0d8ef;
+    border-radius: 0;
+    padding: 0px;
+    border: none;
+    margin-top: 0px;
+    border-radius: none;
+}
+.footer-upper-logo{
+    margin: 0 auto;
+}
+.footer-upper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.footer-upper-nav-clm{
+    border-bottom:1px solid rgba(192,226,240,1.0);/*#c0e2f0*/
+}
+.footer-lower {
+    width: 100%;
+    background-color: #00acf0;
+    margin-top: 10px;
+}
+.footer-container{
+    width: 100%;
+    background-color: #00acf0;
+}
+
+/*a*/
+footer a{
+    color: #0d0015;
+    text-decoration: none; 
+}
+.footer-logo-link{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+/*img*/
+.footer-logo{
+    height: 30px;
+}
+/*h1*/
+.footer-title{
+    font-size: 25px;
+    font-weight: bold;
+}
+/*p*/
+footer p{
+    font-size: 20px;
+    padding: 0px 30px;
+    color:#0d0015;
+    margin: 5px 0px;
+}
+/*#00acf0*/
