@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>画像編集アプリ</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <input type="checkbox" id="menu-toggle" hidden>
+    <header class="site-header">
+        <h1>画像編集アプリ</h1>
+        <div class="menu-wrapper">
+            <label class="menu-icon" for="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </header>
+
+    <nav class="side-menu" id="sideMenu">
+        <p>ようこそ</p>
+    </nav>
+
+    <label for="menu-toggle" class="overlay"></label>
+    <main class="main">
+        <div class="edit">
+            <h2>画像を編集</h2>
+            <input type="file" id="upload">
+
+
+            <canvas id="canvas"></canvas>
+            <br><br>
+            <input type="range" min="-100" max="100" value="0" id="brightness">
+            <div class="edit-buttons">
+                <div class="edit-execution-buttons">
+                    <button class="push-btn" onclick="grayscale()">グレースケール</button>
+                </div>
+                <div class="edit-reset-button">
+                    <button class="push-btn" onclick="resetImage()">リセット</button>
+                </div>
+                <div class="edit-download-button">
+                    <button onclick="downloadImage()">ダウンロード</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <div class="footer-upper">
+            <div class="footer-upper-logo">
+                <a href="index.html"><h1>画像編集アプリ</h1></a>
+            </div>
+            <div class="footer-upper-nav">
+                <div class="footer-upper-nav-clm">
+                    <p>1</p>
+                </div>
+                <div class="footer-upper-nav-clm">
+                    <p>2</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-lower">
+            <div class="footer-container">
+                <p class="copyright">
+                    <small>
+                        Copyright©2026 M.H.
+                        <br>
+                        All Rights Reserved.
+                    </small>
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>
