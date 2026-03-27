@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>画像編集アプリ</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <input type="checkbox" id="menu-toggle" hidden>
     <header class="site-header">
-        <h1>画像編集アプリ</h1>
+        <a href="index.html">
+            <h1>画像編集アプリ</h1>
+        </a>
         <div class="menu-wrapper">
             <label class="menu-icon" for="menu-toggle">
                 <span></span>
@@ -29,21 +33,86 @@
     <main class="main">
         <div class="edit">
             <h2>画像を編集</h2>
-            <input type="file" id="upload">
+            <div class="select-file">
+                <label class="file-upload">
+                    ファイルを選択
+                    <input type="file" id="upload">
+                </label>                
+            </div>
 
 
             <canvas id="canvas"></canvas>
             <br><br>
-            <input type="range" min="-100" max="100" value="0" id="brightness">
+            <h3>フィルター</h3>
+            <div class="filter">
+                <div class="control">
+                    <div class="control-header">
+                        <h4>明るさ</h4>
+                    </div>
+                    <div class="control-body-wrapper">
+                        <div class="control-body">
+                            <div class="control-section">
+                                <input type="range" id="brightness" min="-100" max="100" value="0">
+                                <span id="bVal">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <div class="control-header">
+                        <h4>コントラスト</h4>
+                    </div>
+                    <div class="control-body-wrapper">
+                        <div class="control-body">
+                            <div class="control-section">
+                                <input type="range" id="contrast" min="-100" max="100" value="0">
+                                <span id="cVal">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <div class="control-header">
+                        <h4>彩度</h4>
+                    </div>
+                    <div class="control-body-wrapper">
+                        <div class="control-body">
+                            <div class="control-section">
+                                <input type="range" id="saturation" min="0" max="200" value="100">
+                                <span id="sVal">100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control">
+                    <div class="control-header">
+                        <h4>ぼかし</h4>
+                    </div>
+                    <div class="control-body-wrapper">
+                        <div class="control-body">
+                            <div class="control-section">
+                                <input type="range" id="blur" min="0" max="10" value="0">
+                                <span id="blurVal">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="brightness-contrast-button" onclick="resetFilters()">フィルターをリセット</button>
+
             <div class="edit-buttons">
-                <div class="edit-execution-buttons">
-                    <button class="push-btn" onclick="grayscale()">グレースケール</button>
+                <div class="edit-execution-button">
+                    <ul><button class="push-btn" onclick="grayscale()">グレースケール</button></ul>
                 </div>
                 <div class="edit-reset-button">
-                    <button class="push-btn" onclick="resetImage()">リセット</button>
+                    <ul><button class="push-btn" onclick="resetImage()">リセット</button></ul>
                 </div>
                 <div class="edit-download-button">
-                    <button onclick="downloadImage()">ダウンロード</button>
+                    <ul><button onclick="downloadImage()">ダウンロード</button></ul>
                 </div>
             </div>
         </div>
@@ -52,7 +121,9 @@
     <footer>
         <div class="footer-upper">
             <div class="footer-upper-logo">
-                <a href="index.html"><h1>画像編集アプリ</h1></a>
+                <a href="index.html">
+                    <h1 class="footer-title">画像編集アプリ</h1>
+                </a>
             </div>
             <div class="footer-upper-nav">
                 <div class="footer-upper-nav-clm">
@@ -77,4 +148,5 @@
     </footer>
     <script src="js/script.js"></script>
 </body>
+
 </html>
