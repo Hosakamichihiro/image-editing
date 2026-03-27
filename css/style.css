@@ -35,6 +35,8 @@ header {
 }
 
 .site-header {
+    border-bottom: 1px solid #c0e2f0;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.08);
     position: fixed;
     padding: 0px;
     top: 0;
@@ -188,28 +190,83 @@ h3{
     font-family: "Noto Serif JP", serif;
     font-size: 28px;
 }
+h4{
+    color: #0d0015;
+    font-family: "Noto Serif JP", serif;
+    font-size: 28px;
+    margin: 0px;
+    padding: 10px;
+}
+
 
 /*input*/
-input[type="file"] {
-    padding: 10px;
-    border: 1px solid #c0e2f0;
-    border-radius: 6px;
-    font-size: 16px;
-    width: 70%;
-    font-family: "Noto Serif JP", serif;
-    background-color: #a0d8ef;
-    margin-left: 10px;
-    
+
+input[type="range"]{
+    vertical-align: middle;
+    touch-action: none;
+    background-color: #ebf6f7;
+    border-radius: 5;
+    height: 10px;
+}
+input[type="range"] ::-webkit-slider-runnable-track {
+    background-color: #0d0015;
+    height:5px;
+    border-radius: 2.5px;
+}
+input[type="range"] ::-webkit-slider-thumb {
+    background-color: #0d0015;
+    height:5px;
+    margin:10%;
+    border-radius:2.5px;
 }
 #upload{
     color: #0d0015;
 }
 
+.file-upload {
+    background: #a0d8ef;
+    border: none;
+    padding: 20px 60px;
+    font-family: "Noto Serif JP", serif;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: #0d0015;
+    position: relative;
+    cursor: pointer;
+}
+
+/* 本体は隠す */
+.file-upload input {
+    display: none;
+}
+
+/* ホバー */
+.file-upload :hover{
+    background-color: #00acf0;
+}
+
+/*a*/
+a {
+    color: #0d0015;
+    font-weight: bold;
+    font-family: "Noto Serif JP", serif;
+    text-decoration: none;
+}
+a :hover{
+    color: #00acf0;
+}
+
 /*p*/
-p{
+p {
     color: #0d0015;
     font-family: "Noto Serif JP", serif;
     font-size: 20px;
+}
+
+.control-header p{
+    font-size: 25px;
+    margin: 0px;
 }
 /*li*/
 li{
@@ -218,6 +275,10 @@ li{
     font-size: 20px;
     padding-top:20px; 
     padding-bottom:20px;
+}
+ul {
+    padding: 10px;
+    margin: 0px;
 }
 /*button*/
 button {
@@ -257,41 +318,111 @@ button:hover::after {
     transform: scaleX(0); 
 }
 
+
+.brightness-contrast-button{
+    font-size: 18px;
+    padding: 20px 40px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
 /*div*/
 div {
     background-color: #a0d8ef;
-    border: 1px solid #c0e2f0;
-    padding: 10px;
+/*    border: 1px solid #c0e2f0;*/
+    padding: 0px;
     border-radius: 5px;
 }
 .edit{
-    background-color:#ffffff;
+    background-color:#ebf6f7;
     border-radius: 0;
     border: none;
+}
+.select-file{
+    margin: 20px;
+    background-color: #ebf6f7;
+}
+/*フィルター*/
+.filter{
+    background-color:#ebf6f7;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
+.control {
+    border: 1px solid #c0e2f0;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    margin: 10px;
+    overflow: hidden;
+}
+.control :hover{
+    color: #678b99;
+}
+.control-header {
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+.control-section {
+    height: 30px;
+    border-top: 3px solid #c0e2f0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0px;
+    margin: 0px 15px;
+}
+.control-body {
+    height: 52.67px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0px;
+    margin: 0px;
+}
+
+.control-body-wrapper{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0px;
+    margin: 0px;
+}
+.control.active .control-body {
+    max-height: 52.67px;
+    padding: 0px;
+}
+
+.control.active .control-body-wrapper {
+    max-height: 100px;
+}
+
+.control.active .control-section {
+    max-height: 100px;
+    padding: 10px;
 }
 .edit-buttons{
-    background-color:#ffffff;
     border-radius: 0;
     border: none;
+    display: flex;
+    flex-direction: row;
 }
-.edit-execution-buttons{
-    background-color: #ffffff;
+.edit-execution-button{
+    background-color: #ebf6f7;
     border-radius: 0;
     border: none;
 }
 .edit-reset-button{
-    background-color: #ffffff;
+    background-color: #ebf6f7;
     border-radius: 0;
     border: none;
 }
 .edit-download-button{
-    background-color: #ffffff;
+    background-color: #ebf6f7;
     border-radius: 0;
     border: none;
 }
 /*main*/
 main {
-    background-color: #ffffff; 
+    background-color: #ebf6f7; 
     font-family: "Noto Serif JP", serif;
     color: #3e3e3e;
     padding: 0px;
@@ -304,19 +435,9 @@ canvas {
     margin: 10px;
 }
 
-.auth-link {
-    color: #007b43;  
-}
-
-.auth-link:hover {
-    color: #316745;
-    text-decoration: underline;
-}
-
 /*フッター(本体)*/
 footer{
     width: 100%;
-    margin-top: 20px;
     height: auto;
     background-color: #a0d8ef;
     display: flex;
@@ -355,10 +476,6 @@ footer div{
 }
 
 /*a*/
-footer a{
-    color: #0d0015;
-    text-decoration: none; 
-}
 .footer-logo-link{
     display: flex;
     margin-left: auto;
@@ -374,7 +491,7 @@ footer a{
 }
 /*h1*/
 .footer-title{
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
 }
 /*p*/
@@ -385,3 +502,4 @@ footer p{
     margin: 5px 0px;
 }
 /*#00acf0*/
+/*#ebf6f7藍白*/
