@@ -484,6 +484,7 @@ footer div{
     gap: 20px;
     text-decoration: none;
     color: inherit;
+    padding-left: 20px;
 }
 /*img*/
 .footer-logo{
