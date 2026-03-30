@@ -43,7 +43,26 @@
 
 
             <canvas id="canvas"></canvas>
-            <br><br>
+
+            <h3>トリミング</h3>
+            <div class="control">
+                <div class="control-header">
+                    <h4>✂️ トリミング</h4>
+                </div>
+                <div class="control-body-wrapper">
+                    <div class="trimming-body">
+                        <div class="trimming-section">
+                            <div class="crop-buttons">
+                                <button onclick="startCrop()">選択開始</button>
+                                <button onclick="crop()">切り抜き</button>
+                                <button onclick="cancelCrop()">キャンセル</button>
+                            </div>
+                            <p class="crop-info">画像上をドラッグして範囲を選択してください</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <h3>フィルター</h3>
             <div class="filter">
                 <div class="control">
