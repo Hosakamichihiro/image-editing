@@ -333,6 +333,26 @@ div {
     padding: 0px;
     border-radius: 5px;
 }
+.side-menu-header {
+    margin: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+.side-menu-section {
+    height: 30px;
+    border-top: 3px solid #c0e2f0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0px;
+    margin: 0px 15px;
+}
+.side-menu-body {
+    height: 52.67px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0px;
+    margin: 0px;
+}
 .edit{
     background-color:#ebf6f7;
     border-radius: 0;
