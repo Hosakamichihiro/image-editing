@@ -73,6 +73,51 @@ function grayscale() {
     ctx.putImageData(imageData, 0, 0);
 }
 
+//-----
+//トリミング
+//-----
+let startX, startY, endX, endY;
+let isDragging = false;
+
+canvas.addEventListener("mousedown", (e) => {
+    startX = e.offsetX;
+    startY = e.offsetY;
+    isDragging = true;
+});
+
+canvas.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    endX = e.offsetX;
+    endY = e.offsetY;
+
+    // プレビュー（四角）
+    ctx.putImageData(originalImage, 0, 0);
+    ctx.strokeStyle = "red";
+    ctx.strokeRect(startX, startY, endX - startX, endY - startY);
+});
+
+canvas.addEventListener("mouseup", () => {
+    isDragging = false;
+});
+
+function startCrop() {
+    console.log("OK");
+}
+//
+function crop() {
+    const width = endX - startX;
+    const height = endY - startY;
+
+    const imageData = ctx.getImageData(startX, startY, width, height);
+
+    canvas.width = width;
+    canvas.height = height;
+
+    ctx.putImageData(imageData, 0, 0);
+
+    saveState();
+}
 
 //------------
 //明るさ・コントラスト調節
@@ -160,6 +205,8 @@ function applyFilters() {
         document.getElementById("blurVal").textContent = blurSlider.value;
         applyFilters();
     };
+    //保存
+    slider.addEventListener("change", saveState);
 }
 
 function updateDisplay() {
@@ -167,6 +214,52 @@ function updateDisplay() {
     document.getElementById("cVal").textContent = contrastSlider.value;
     document.getElementById("sVal").textContent = saturationSlider.value;
     document.getElementById("blurVal").textContent = blurSlider.value;
+}
+
+//保存
+let history = [];
+let historyIndex = -1;
+
+function saveState() {
+    // 現在のCanvasを保存
+    const data = canvas.toDataURL();
+
+    // 未来を削除（Redo対策）
+    history = history.slice(0, historyIndex + 1);
+
+    history.push(data);
+    historyIndex++;
+}
+
+//-----
+//Undo
+//-----
+function undo() {
+    if (historyIndex > 0) {
+        historyIndex--;
+        restoreState();
+    }
+}
+//-----
+//Redo
+//-----
+function redo() {
+    if (historyIndex < history.length - 1) {
+        historyIndex++;
+        restoreState();
+    }
+}
+//-----
+//復元
+//-----
+function restoreState() {
+    const img = new Image();
+    img.src = history[historyIndex];
+
+    img.onload = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0);
+    };
 }
 //リセット
 function resetFilters() {
