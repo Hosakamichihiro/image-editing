@@ -22,6 +22,31 @@ window.addEventListener("scroll", () => {
 });
 
 //---------------
+//サイドバー
+//---------------
+function openFilter(name) {
+    //サイドバーを閉じる
+    document.getElementById("menu-toggle").checked = false;
+
+    //全部閉じる
+    var controls = document.querySelectorAll(".control");
+    for (var i = 0; i < controls.length; i++) {
+        controls[i].classList.remove("active");
+    }
+
+    //対象を開く
+    var target = document.getElementById(name + "-control");
+    if (target) {
+        target.classList.add("active");
+
+        //スクロール（UX向上）
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+}
+//---------------
 //フィルターの開閉
 //---------------
 document.querySelectorAll(".control-header").forEach(header => {
