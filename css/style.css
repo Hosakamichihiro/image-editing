@@ -7,28 +7,6 @@ body {
     border: 0px;
 }
 
-
-/*ヘッダー(ロゴ)*/
-.logo-link{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    text-decoration: none;
-    color: inherit;
-    margin-right:auto;
-    padding-left: 20px;
-}
-
-.logo{
-    height: 50px;
-}
-
-/*ヘッダー(タイトル)*/
-.site-title{
-    font-size: 42px;
-    font-weight: bold;
-}
-
 /*ヘッダー(本体)*/
 header {
     padding: 1em 0;
@@ -50,13 +28,33 @@ header {
     z-index: 1100;
     transition: transform 0.3s ease; /* ← アニメーション */
 }
+/*ヘッダー(ロゴ)a*/
+.header-logo-link{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+    margin-right:auto;
+    padding-left: 20px;
+}
+/*ロゴ本体*/
+.header-logo{
+    height: 50px;
+}
+
+/*ヘッダー(タイトル)h1*/
+.site-title{
+    font-size: 42px;
+    font-weight: bold;
+}
 
 /* 隠す用クラス */
 .site-header.hide {
     transform: translateY(-100%);
 }
 
-/*サイドメニュー*/
+/*ハンバーガーメニュー*/
 .menu-wrapper{
     font-size:28px;
     background-color: #a0d8ef;
@@ -103,12 +101,12 @@ header {
 #menu-toggle:checked + header .menu-wrapper .menu-icon span:nth-child(3){
     transform:translateY(-11px) rotate(-45deg);
 }
-
+/*サイドメニュー*/
 .side-menu{
     position:fixed;
     top:0;
-    right:-250px;
-    width:250px;
+    right:-300px;
+    width:300px;
     height:100%;
     background:#a0d8ef;
     padding-top:100px;
@@ -126,27 +124,50 @@ header {
     opacity:1;
 }
 
-/*サイドメニュー(a)*/
-.side-menu a{
+
+/*サイドメニュー*/
+.side-menu h4{
     text-decoration:none;
+    font-size: 24px;
     padding:15px 30px;
-    font-size:18px;
     color:#0d0015;
 }
-
-.side-menu a:hover{
-    background:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-    background-color:#fffef8 ;
-    color:#2c3e50
+.side-menu div{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
 }
-
-/*サイドメニュー(p)*/
+.side-menu div ::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0px; /* 文字の少し下 */
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width 0.3s ease;
+}
+.side-menu div :hover{
+    color:#5e0099;
+}
+.side-menu div :hover::after {
+    width: 100%;
+}
 .side-menu p{
-    padding: 15px 30px;
-    color:#0d0015;
     border-bottom:3px solid rgba(204,231,255,1.0);/*#c0e2f0*/
-    margin-bottom:10px;
 }
+.side-menu label{
+    background: #a0d8ef;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+.side-menu input {
+    display: none;
+    color: #0d0015;
+}
+
 
 .overlay{
     position:fixed;
@@ -223,7 +244,6 @@ input[type="range"] ::-webkit-slider-thumb {
 #upload{
     color: #0d0015;
 }
-
 .file-upload {
     background: #a0d8ef;
     border: none;
@@ -254,6 +274,9 @@ a {
     font-family: "Noto Serif JP", serif;
     text-decoration: none;
 }
+.crop-info:hover{
+    color: #0d0015;
+}
 a :hover{
     color: #00acf0;
 }
@@ -262,12 +285,9 @@ a :hover{
 p {
     color: #0d0015;
     font-family: "Noto Serif JP", serif;
-    font-size: 20px;
-}
-
-.control-header p{
     font-size: 25px;
     margin: 0px;
+    padding: 15px 30px;
 }
 /*li*/
 li{
@@ -318,6 +338,9 @@ button:hover::before {
 button:hover::after {
     transform: scaleX(0); 
 }
+button:hover{
+    color: #5e0099;
+}
 
 
 .brightness-contrast-button{
@@ -331,26 +354,19 @@ div {
     background-color: #a0d8ef;
 /*    border: 1px solid #c0e2f0;*/
     padding: 0px;
-    border-radius: 5px;
-}
-.side-menu-header {
-    margin: 0px;
-    padding: 0px;
-    cursor: pointer;
+    border-radius: 0px;
 }
 .side-menu-section {
     height: 30px;
     border-top: 3px solid #c0e2f0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    padding: 0px;
     margin: 0px 15px;
 }
 .side-menu-body {
     height: 52.67px;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    padding: 0px;
     margin: 0px;
 }
 .edit{
@@ -377,11 +393,10 @@ div {
     overflow: hidden;
 }
 .control :hover{
-    color: #678b99;
+    color: #5e0099;
 }
 .control-header {
     margin: 0px;
-    padding: 0px;
     cursor: pointer;
 }
 .control-section {
@@ -389,48 +404,49 @@ div {
     border-top: 3px solid #c0e2f0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    padding: 0px;
     margin: 0px 15px;
 }
 .control-body {
     height: 52.67px;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    padding: 0px;
     margin: 0px;
 }
 .trimming-section {
-    height: 80px;
+    height: 160px;
     border-top: 3px solid #c0e2f0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    padding: 0px;
     margin: 0px 15px;
 }
 .trimming-body {
-    height: 80px;
+    height: 160px;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    padding: 0px;
     margin: 0px;
 }
-
+.trimming-body-wrapper{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin: 0px;
+}
 .control-body-wrapper{
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    padding: 0px;
     margin: 0px;
 }
 .control.active .control-body {
     max-height: 52.67px;
-    padding: 0px;
 }
 
 .control.active .control-body-wrapper {
     max-height: 100px;
 }
-
+.control.active .trimming-body-wrapper {
+    max-height: 160px;
+}
 .control.active .control-section {
     max-height: 100px;
     padding: 10px;
