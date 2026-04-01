@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>画像編集アプリ</title>
-    <link rel="icon" type="image/png" href="assets/images/icon.png">
+    <link rel="icon" type="image/svg" href="assets/images/logo.svg">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <link rel="stylesheet" href="css/style.css">
@@ -14,7 +14,7 @@
     <input type="checkbox" id="menu-toggle" hidden>
     <header class="site-header">
         <a href="index.html" class="header-logo-link">
-            <img src="assets/images/logo.png" class="header-logo">
+            <img src="assets/images/logo.svg" class="header-logo">
             <h1 class="site-title">画像編集アプリ</h1>
         </a>
         <div class="menu-wrapper">
@@ -49,6 +49,10 @@
 
         <div onclick="openFilter('blur')">
             <h4>ぼかし</h4>
+        </div>
+
+        <div onclick="openFilter('grayscale')">
+            <h4>グレースケール</h4>
         </div>
     </nav>
 
@@ -155,12 +159,36 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="control" id="grayscale-control">
+                    <div class="control-header">
+                        <h4>グレースケール</h4>
+                    </div>
+                    <div class="grayscale-body-wrapper">
+                        <div class="grayscale-body">
+                            <div class="grayscale-section">
+                                <button class="execution-button" onclick="grayscale()">実行</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control" id="edge-control">
+                    <div class="control-header">
+                        <h4>エッジ検出</h4>
+                    </div>
+                    <div class="edge-body-wrapper">
+                        <div class="edge-body">
+                            <div class="edge-section">
+                                <button class="execution-button" onclick="edgeDetect()">実行</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="edit-buttons">
-                <div class="edit-execution-button">
-                    <ul><button class="push-btn" onclick="grayscale()">グレースケール</button></ul>
-                </div>
+
                 <div class="edit-reset-button">
                     <ul><button class="push-btn" onclick="resetImage()">リセット</button></ul>
                 </div>
