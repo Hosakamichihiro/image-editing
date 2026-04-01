@@ -144,7 +144,7 @@ header {
     bottom: 0px; /* 文字の少し下 */
     width: 0;
     height: 2px;
-    background: #000;
+    background: #0d0015;
     transition: width 0.3s ease;
 }
 .side-menu div :hover{
@@ -247,7 +247,7 @@ input[type="range"] ::-webkit-slider-thumb {
 .file-upload {
     background: #a0d8ef;
     border: none;
-    padding: 20px 60px;
+    padding: 10px;
     font-family: "Noto Serif JP", serif;
     font-size: 20px;
     font-weight: bold;
@@ -256,17 +256,9 @@ input[type="range"] ::-webkit-slider-thumb {
     position: relative;
     cursor: pointer;
 }
-
-/* 本体は隠す */
 .file-upload input {
     display: none;
 }
-
-/* ホバー */
-.file-upload :hover{
-    background-color: #00acf0;
-}
-
 /*a*/
 a {
     color: #0d0015;
@@ -376,8 +368,12 @@ div {
     border: none;
 }
 .select-file{
-    margin: 20px;
+    margin: 0px auto 0px 10px;
+    padding: 10px;
     background-color: #ebf6f7;
+}
+.select-file :hover{
+    color: #5e0099;
 }
 .trimming{
     background-color:#ebf6f7;
@@ -412,15 +408,15 @@ div {
 }
 .filter-header h3{
     padding: 0px;
-    margin: 0px auto 0px 20px;
+    margin: 10px auto 10px 20px;
 }
 .filter-header button{
     vertical-align: middle;
     width: 100%;
-    padding: 0px;
+    padding: 10px;
     background-color: #a0d8ef;
     color: #0d0015;
-    height: 40px;
+    height: 60px;
 }
 .filter-header button:hover{
     background: #5e0099;
@@ -467,7 +463,7 @@ div {
 }
 .trimming-header h3{
     padding: 0px;
-    margin: 0px auto 0px 20px;
+    margin: 10px auto 10px 20px;
 }
 .trimming-body-wrapper{
     max-height: 0;
@@ -495,7 +491,63 @@ div {
 .trimming-section p:hover{
     color: #0d0015;
 }
+/*グレースケール*/
+.grayscale-body-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.grayscale-body {
+    height: 82.67px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin: 0px;
+}
+.grayscale-section{
+    height: 60px;
+    border-top: 3px solid #c0e2f0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin: 0px 15px;
+}
 
+/*エッジ検出*/
+.edge-body-wrapper{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.edge-body{
+    height: 82.67px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin: 0px;
+}
+.edge-section{
+    height: 60px;
+    border-top: 3px solid #c0e2f0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin: 0px 15px;
+}
+/*グレースケール・エッジ検出共通実行ボタン*/
+.execution-button{
+    font-size: 30px;
+    vertical-align: middle;
+    width: 100%;
+    padding: 0px;
+    background-color: #a0d8ef;
+    color: #0d0015;
+    height: 60px;
+}
+.execution-button:hover{
+    color: #5e0099;
+}
+
+.execution-button::before,
+.execution-button::after {
+    all: unset;
+}
 /*フィルター(アクティブ)*/
 .control.active .filter-body-wrapper {
     max-height: 100px;
@@ -507,6 +559,22 @@ div {
     max-height: 100px;
     padding: 10px;
 }
+/*フィルター(グレースケール)(アクティブ)*/
+.control.active .grayscale-body-wrapper {
+    max-height: 160px;
+}
+.control.active .grayscale-section {
+    max-height: 160px;
+    padding: 10px;
+}
+/*フィルター(エッジ検出)(アクティブ)*/
+.control.active .edge-body-wrapper {
+    max-height: 160px;
+}
+.control.active .edge-section {
+    max-height: 160px;
+    padding: 10px;
+}
 /*トリミング(アクティブ)*/
 .control.active .trimming-body-wrapper {
     max-height: 160px;
@@ -515,6 +583,7 @@ div {
     max-height: 160px;
     padding: 10px;
 }
+
 .edit-buttons{
     background-color: #ebf6f7;
     border-radius: 0;
