@@ -66,34 +66,47 @@
 
             <canvas id="canvas"></canvas>
 
-            <h3>トリミング</h3>
-            <div class="control">
-                <div class="control-header">
-                    <h4>✂️ トリミング</h4>
+            <div class="trimming">
+                <div class="trimming-header">
+                    <h3>トリミング</h3>
                 </div>
-                <div class="trimming-body-wrapper">
-                    <div class="trimming-body">
-                        <div class="trimming-section">
-                            <div class="crop-buttons">
-                                <button onclick="startCrop()">選択開始</button>
-                                <button onclick="crop()">切り抜き</button>
-                                <button onclick="cancelCrop()">キャンセル</button>
+                <div class="control">
+                    <div class="control-header">
+                        <h4>✂️ トリミング</h4>
+                    </div>
+                    <div class="trimming-body-wrapper">
+                        <div class="trimming-body">
+                            <div class="trimming-section">
+                                <div class="trimming-buttons">
+                                    <button onclick="startCrop()">選択開始</button>
+                                    <button onclick="crop()">切り抜き</button>
+                                    <button onclick="cancelCrop()">キャンセル</button>
+                                </div>
+                                <p>画像上をドラッグして範囲を選択してください</p>
                             </div>
-                            <p class="crop-info">画像上をドラッグして範囲を選択してください</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <h3>フィルター</h3>
+
+
             <div class="filter">
+                <div class="filter-header">
+                    <h3>フィルター</h3>
+                    <div>
+                        <button onclick="resetFilters()">
+                            フィルターをリセット
+                        </button>
+                    </div>
+                </div>
+
                 <div class="control" id="brightness-control">
                     <div class="control-header">
                         <h4>明るさ</h4>
                     </div>
-                    <div class="control-body-wrapper">
-                        <div class="control-body">
-                            <div class="control-section">
+                    <div class="filter-body-wrapper">
+                        <div class="filter-body">
+                            <div class="filter-section">
                                 <input type="range" id="brightness" min="-100" max="100" value="0">
                                 <span id="bVal">0</span>
                             </div>
@@ -105,9 +118,9 @@
                     <div class="control-header">
                         <h4>コントラスト</h4>
                     </div>
-                    <div class="control-body-wrapper">
-                        <div class="control-body">
-                            <div class="control-section">
+                    <div class="filter-body-wrapper">
+                        <div class="filter-body">
+                            <div class="filter-section">
                                 <input type="range" id="contrast" min="-100" max="100" value="0">
                                 <span id="cVal">0</span>
                             </div>
@@ -119,9 +132,9 @@
                     <div class="control-header">
                         <h4>彩度</h4>
                     </div>
-                    <div class="control-body-wrapper">
-                        <div class="control-body">
-                            <div class="control-section">
+                    <div class="filter-body-wrapper">
+                        <div class="filter-body">
+                            <div class="filter-section">
                                 <input type="range" id="saturation" min="0" max="200" value="100">
                                 <span id="sVal">100</span>
                             </div>
@@ -133,9 +146,9 @@
                     <div class="control-header">
                         <h4>ぼかし</h4>
                     </div>
-                    <div class="control-body-wrapper">
-                        <div class="control-body">
-                            <div class="control-section">
+                    <div class="filter-body-wrapper">
+                        <div class="filter-body">
+                            <div class="filter-section">
                                 <input type="range" id="blur" min="0" max="10" value="0">
                                 <span id="blurVal">0</span>
                             </div>
@@ -143,8 +156,6 @@
                     </div>
                 </div>
             </div>
-
-            <button class="brightness-contrast-button" onclick="resetFilters()">フィルターをリセット</button>
 
             <div class="edit-buttons">
                 <div class="edit-execution-button">
