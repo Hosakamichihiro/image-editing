@@ -353,6 +353,7 @@ button:hover{
 div {
     background-color: #a0d8ef;
 /*    border: 1px solid #c0e2f0;*/
+    margin: 0px;
     padding: 0px;
     border-radius: 0px;
 }
@@ -378,6 +379,12 @@ div {
     margin: 20px;
     background-color: #ebf6f7;
 }
+.trimming{
+    background-color:#ebf6f7;
+    border: none;
+    display: flex;
+    flex-direction: column;
+}
 /*フィルター*/
 .filter{
     background-color:#ebf6f7;
@@ -396,18 +403,80 @@ div {
     color: #5e0099;
 }
 .control-header {
-    margin: 0px;
     cursor: pointer;
 }
-.control-section {
-    height: 30px;
+.filter-header{
+    margin-top: 20px;
+    background-color: #ebf6f7;
+    display: flex;
+}
+.filter-header h3{
+    padding: 0px;
+    margin: 0px auto 0px 20px;
+}
+.filter-header button{
+    vertical-align: middle;
+    width: 100%;
+    padding: 0px;
+    background-color: #a0d8ef;
+    color: #0d0015;
+    height: 40px;
+}
+.filter-header button:hover{
+    background: #5e0099;
+    color: #ebf6f7;
+}
+
+.filter-header button::before,
+.filter-header button::after {
+    all: unset;
+}   
+.filter-header div{
+    background-color: #ebf6f7;
+    margin-right: 50px;
+}
+
+
+.filter-header p{
+    font-size: 15px;
+    padding: 0px;
+}
+.filter-body-wrapper{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+.filter-body{
+    height: 52.67px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin: 0px;
+}
+.filter-section {
+    height: 40px;
     border-top: 3px solid #c0e2f0;
     overflow: hidden;
     transition: max-height 0.3s ease;
     margin: 0px 15px;
 }
-.control-body {
-    height: 52.67px;
+
+.trimming-header{
+    margin-top: 20px;
+    background-color: #ebf6f7;
+    display: flex;
+}
+.trimming-header h3{
+    padding: 0px;
+    margin: 0px auto 0px 20px;
+}
+.trimming-body-wrapper{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    margin: 0px;
+}
+.trimming-body {
+    height: 160px;
     overflow: hidden;
     transition: max-height 0.3s ease;
     margin: 0px;
@@ -419,43 +488,39 @@ div {
     transition: max-height 0.3s ease;
     margin: 0px 15px;
 }
-.trimming-body {
-    height: 160px;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    margin: 0px;
+.trimming-buttons{
+    display: flex;
+    justify-content: space-around;
 }
-.trimming-body-wrapper{
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    margin: 0px;
-}
-.control-body-wrapper{
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    margin: 0px;
-}
-.control.active .control-body {
-    max-height: 52.67px;
+.trimming-section p:hover{
+    color: #0d0015;
 }
 
-.control.active .control-body-wrapper {
+/*フィルター(アクティブ)*/
+.control.active .filter-body-wrapper {
     max-height: 100px;
 }
-.control.active .trimming-body-wrapper {
-    max-height: 160px;
+.control.active .filter-body {
+    max-height: 52.67px;
 }
-.control.active .control-section {
+.control.active .filter-section {
     max-height: 100px;
     padding: 10px;
 }
+/*トリミング(アクティブ)*/
+.control.active .trimming-body-wrapper {
+    max-height: 160px;
+}
+.control.active .trimming-section {
+    max-height: 160px;
+    padding: 10px;
+}
 .edit-buttons{
+    background-color: #ebf6f7;
     border-radius: 0;
     border: none;
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
 }
 .edit-execution-button{
     background-color: #ebf6f7;
