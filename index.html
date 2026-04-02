@@ -31,7 +31,7 @@
         <div>
             <label>
                 <h4>ファイルを選択</h4>
-                <input type="file" id="upload">
+                <input type="file" id="upload-side" >
             </label>
         </div>
 
@@ -63,7 +63,7 @@
             <div class="select-file">
                 <label class="file-upload">
                     ファイルを選択
-                    <input type="file" id="upload">
+                    <input type="file" id="upload-main">
                 </label>                
             </div>
 
@@ -132,7 +132,7 @@
                     </div>
                 </div>
 
-                <div class="control id="saturation-control"">
+                <div class="control" id="saturation-control">
                     <div class="control-header">
                         <h4>彩度</h4>
                     </div>
@@ -228,7 +228,19 @@
             </div>
         </div>
     </footer>
-    <script src="js/script.js"></script>
+    <script src="js/canvas.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/history.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/crop.js"></script>
+    <script src="js/main.js"></script>
+        
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            initApp();
+        });
+    </script>
 </body>
 
 </html>
