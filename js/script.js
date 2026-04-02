@@ -61,29 +61,49 @@ document.querySelectorAll(".control-header").forEach(header => {
     });
 });
 
+var originalImage = null;
+//---------------
+//画像のアップロード
+//---------------
+var uploadMain = document.getElementById("upload-main");
+var uploadSide = document.getElementById("upload-side");
 
+uploadMain.addEventListener("change", loadImage);
+uploadSide.addEventListener("change", loadImage);
 
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
 
-const upload = document.getElementById("upload");
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+function loadImage(e) {
+    var file = e.target.files[0];
+    if (!file) return;
 
-let originalImage = null;
-let imgElement = new Image();
-// 画像読み込み
-upload.addEventListener("change", function () {
-    const file = this.files[0];
+    var reader = new FileReader();
 
-    imgElement.onload = function () {
-        canvas.width = imgElement.width;
-        canvas.height = imgElement.height;
-        ctx.drawImage(imgElement, 0, 0);
+    reader.onload = function (event) {
+        var img = new Image();
 
-        originalImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        img.onload = function () {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+        };
+
+        img.src = event.target.result;
     };
 
-    imgElement.src = URL.createObjectURL(file);
-});
+    reader.readAsDataURL(file);
+}
+
+img.onload = function () {
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    ctx.drawImage(img, 0, 0);
+
+    // 🔥 これが超重要
+    originalImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+};
 
 // グレースケール
 function grayscale() {
@@ -165,7 +185,7 @@ function applyFilters() {
     const contrast = parseInt(contrastSlider.value);
     const saturation = parseInt(saturationSlider.value) / 100;
     const blur = parseInt(blurSlider.value);
-
+    //ctx.putImageData(originalImage, 0, 0);
     //一度Canvasをクリアして描画（ぼかし用）
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -350,6 +370,8 @@ function restoreState() {
 }
 //リセット
 function resetFilters() {
+    if (!originalImage) return;
+
     brightnessSlider.value = 0;
     contrastSlider.value = 0;
     saturationSlider.value = 100;
@@ -357,12 +379,31 @@ function resetFilters() {
 
     updateDisplay();
     applyFilters();
+/*
+    if (!originalImage) return;
+
+    brightnessSlider.value = 0;
+    contrastSlider.value = 0;
+    saturationSlider.value = 100;
+    blurSlider.value = 0;
+
+    // 表示も戻す
+    document.getElementById("bVal").textContent = 0;
+    document.getElementById("cVal").textContent = 0;
+    document.getElementById("sVal").textContent = 100;
+    document.getElementById("blurVal").textContent = 0;
+    */
 }
 
 //------------
 //全体のリセット
 //------------
 function resetImage() {
+/*
+    if (!originalImage) return;
+*/
+    ctx.putImageData(originalImage, 0, 0);
+
     if (originalImage) {
         ctx.putImageData(originalImage, 0, 0);
     }
